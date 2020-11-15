@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+        <title>Курсы Валют</title>
+    </head>
+
+    <body>
+        <div class="container" >
+            <h3>Список курсов валют</h3>
+            <hr>
+
+
+            <a th:href="@{/courses/convertForm}" class="btn btn-primary btn-sm mb-3">Конвертер</a>
+
+            <a th:href="@{/courses/history}" class="btn btn-info btn-sm mb-3"> Посмотреть историю </a>
+
+
+            <table class="table table-bordered table-striped">
+
+                <thead class="thead-light">
+                    <tr>
+                        <th>
+                            Аббревиатура
+                        </th>
+
+                        <th>
+                            Номинал
+                        </th>
+
+                        <th>
+                            Название
+                        </th>
+
+                        <th>
+                            Курс к рублю
+                        </th>
+
+                        <th>
+                            Дата
+                        </th>
+
+                        <th>Что делаем?</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr th:each="tempCourse : ${courses}">
+
+                        <td th:text="${tempCourse.charcode}" />
+
+                        <td th:text="${tempCourse.nominal}" />
+
+                        <td th:text="${tempCourse.valutename}" />
+
+                        <td th:text="${tempCourse.valutevalue}" />
+
+                        <td th:text="${tempCourse.today}" />
+
+                        <td>
+
+
+
+                            <a th:href="@{/courses/showFormForUpdate(courseId=${tempCourse.id})}"
+                            class="btn btn-info btn-sm">
+                                Изменить
+                            </a>
+
+
+                            <a th:href="@{/courses/delete(courseId=${tempCourse.id})}"
+                               class="btn btn-danger btn-sm"
+                                onclick="if (!(confirm('Удаляем? Уверены? Точно? Хорошо Подумали???'))) return false">
+                                Удалить
+                            </a>
+
+
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </body>
+
+</html>

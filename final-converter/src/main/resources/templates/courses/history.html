@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+        <title>History</title>
+    </head>
+    <body>
+        <br>
+
+
+        <div class="container" >
+
+                <br>
+
+            <a th:href="@{/courses/convertForm}" class="btn btn-primary btn-sm mb-3">Конвертер</a>
+            <a th:href="@{/courses/list}" class="btn btn-info btn-sm mb-3">К списку курсов</a>
+
+            <br>
+
+
+                <table class="table table-bordered table-striped">
+
+                    <thead class="thead-light">
+
+                    <tr>
+                        <th>
+                            День
+                        </th>
+
+                        <th>
+                            Валюта "из"
+                        </th>
+
+                        <th>
+                            Курс в рублях
+                        </th>
+
+                        <th>
+                            Сумма валюты "из"
+
+                        </th>
+
+                        <th>
+                            Валюта "в"
+                        </th>
+
+                        <th>
+                            Получим валюты "в"
+                        </th>
+
+                    </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        <tr th:each="convertation : ${convertationList}">
+
+                            <td th:text="${convertation.convertationday}" />
+
+                            <td th:text="${convertation.valutefrom}" />
+
+                            <td th:text="${convertation.valutefromvalue}" />
+
+                            <td th:text="${convertation.number}" />
+
+                            <td th:text="${convertation.valuteto}" />
+
+                            <td th:text="${convertation.result}" />
+
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+        </div>
+
+    </body>
+
+</html>

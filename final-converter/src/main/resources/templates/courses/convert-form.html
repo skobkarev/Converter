@@ -1,0 +1,83 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+        <title>Convert-form</title>
+    </head>
+
+    <body>
+        <div class="container">
+
+        <h1>Конвертер валют</h1>
+        <hr color="blue" >
+
+        <h2> Сконвертировать из </h2>
+
+
+        <form action="#" th:action="@{/courses/convertResult}"  method="post">
+              <select th:name="from" >
+
+                  <option th:each="course : ${courses}"
+                          th:value="${course.id}"
+                          th:text="${course.nominal}+' '+${course.valutename}+' ('+${course.valutevalue} + ' руб.)'">
+                  </option>
+
+              </select>
+
+            <br>
+            <br>
+
+            <textarea   rows="2" cols="25" th:name="number" th:default="1"
+                        placeholder="введите сумму в формате 12.34 или 123" class="colFirst"></textarea>
+
+
+            <br>
+            <br>
+
+            <h2> В </h2>
+
+            <br>
+
+            <select th:name="to">
+
+                <option th:each="course2 : ${courses}"
+                        th:value="${course2.id}"
+                        th:text="${course2.nominal}+' '+${course2.valutename}+' ('+${course2.valutevalue} + ' руб.)'">
+                </option>
+
+            </select>
+
+            <br>
+            <br>
+
+            <button type="submit" value="Submit" class="btn btn-primary btn-sm mb-3">Конвертировать</button>
+
+        </form>
+
+        </div>
+
+        <hr color="red">
+
+        <div class="container">
+
+            <a th:href="@{/courses/history}" class="btn btn-info btn-sm mb-3"> Посмотреть историю </a>
+
+        </div>
+
+
+
+        <div class="container">
+
+            <a th:href="@{/courses/list}" class="btn btn-success btn-sm mb-3"> Посмотреть курсы </a>
+
+        </div>
+
+
+    </body>
+
+</html>

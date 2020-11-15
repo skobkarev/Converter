@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+        <title>Save Course</title>
+
+    </head>
+
+    <body>
+
+        <div class="container">
+
+            <h3>Список курсов</h3>
+
+            <hr>
+
+            <p class="h4 mb-4">Сохранить курс</p>
+
+            <form action="#" th:action="@{/courses/save}"
+                             th:object="${course}" method="POST">
+
+                <input type="hidden" th:field="*{id}" />
+
+                <input type="text" th:field="*{charcode}"
+                       class="form-control mb-4 col-4" placeholder="аббревиатура">
+
+                <input type="text" th:field="*{nominal}"
+                       class="form-control mb-4 col-4" placeholder="номинал">
+
+                <input type="text" th:field="*{valutename}"
+                       class="form-control mb-4 col-4" placeholder="название">
+
+                <input type="text" th:field="*{valutevalue}"
+                       class="form-control mb-4 col-4" placeholder="курс к рублю">
+
+                <input type="text" th:field="*{today}"
+                       class="form-control mb-4 col-4" placeholder="дата">
+
+                <button type="submit" class="btn btn-success col-2">Сохранить</button>
+
+            </form>
+
+            <hr>
+
+            <a th:href="@{/courses/list}" class="btn btn-info col-2">К списку курсов</a>
+
+        </div>
+    </body>
+
+</html>
